@@ -1,0 +1,14 @@
+a{
+    color: darkblue;
+    font-family: 楷体, serif;
+    font-size: x-large;
+    text-align: center;
+    text-decoration: none;
+}
+a:hover{
+    color: #92f8c8;
+    font-family: 楷体, serif;
+    font-size: x-large;
+    text-align: center;
+    text-decoration: none;
+}

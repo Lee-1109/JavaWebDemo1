@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <!--name指定POJO类，table指定对应的数据库表-->
+    <class name="model.User" table="users" schema="liyang" >
+        <!--name指定主键 type指定类型-->
+        <id name="name" type="java.lang.String">
+            <column name="name" length="50"/>
+            <generator class="assigned"/>
+        </id>
+        <!--name指定属性 与表中数据对应-->
+        <property name="password" type="java.lang.String">
+            <column name="password" length="50"/>
+        </property>
+        <property name="role" type="java.lang.String">
+            <column name="role"/>
+        </property>
+    </class>
+</hibernate-mapping>

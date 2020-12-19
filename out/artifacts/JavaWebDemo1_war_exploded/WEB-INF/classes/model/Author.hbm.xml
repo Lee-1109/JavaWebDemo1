@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <!--name指定POJO类，table指定对应的数据库表-->
+    <class name="model.Author" table="authors" schema="liyang" >
+        <!--name指定主键 type指定类型-->
+        <id name="id" type="java.lang.Integer">
+            <column name="AUTHOR_ID"/>
+            <generator class="increment"/>
+        </id>
+        <property name="name" type="java.lang.String">
+            <column name="AUTHOR_NAME"/>
+        </property>
+        <property name="tel" type="java.lang.String">
+            <column name="TEL"/>
+        </property>
+        <property name="email" type="java.lang.String">
+            <column name="EMAIL"/>
+        </property>
+        <!--对应Author中的属性-->
+        <!--inverse=true 放弃维护关联关系-->
+        <set name="books" table="books" cascade="save-update" inverse="true">
+            <key  column="AUTHOR_ID"/>
+            <one-to-many class="model.Book"/>
+        </set>
+    </class>
+</hibernate-mapping>

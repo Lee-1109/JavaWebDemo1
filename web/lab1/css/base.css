@@ -1,0 +1,23 @@
+article{
+    align-content:center;
+    color: blueviolet;
+    font-family: "宋体";
+    font-size: larger;
+}
+table{
+    color: blueviolet;
+    font-family: 宋体;
+    font-size: larger;
+    border-color: black;
+    border-style: dotted;
+}
+
+h1{
+    color: black;
+    align-content: center;
+}
+form{
+    color: black;
+    font-size: larger;
+    font-family: 楷体;
+}

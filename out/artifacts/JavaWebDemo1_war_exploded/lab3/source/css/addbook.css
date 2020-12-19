@@ -1,0 +1,21 @@
+div{
+    align-content: center;
+    width: 1000px;
+    height: 100px;
+}
+form{
+    text-align: center;
+    color: blue;
+    font-family: 楷体, serif;
+    font-size: larger;
+}
+label{
+    width: 150px;
+    height: 50px;
+}
+h1{
+    font-family: 楷体;
+    font-size: x-large;
+    text-align: center;
+    color: blueviolet;
+}

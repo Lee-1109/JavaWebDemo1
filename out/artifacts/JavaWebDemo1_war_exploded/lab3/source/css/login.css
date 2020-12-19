@@ -1,0 +1,57 @@
+form{
+    text-align: center;
+    color: blue;
+    font-family: 楷体, serif;
+    font-size: larger;
+    border-style: solid;
+    border-width: 4px;
+}
+a{
+    color: blueviolet;
+    font-family: 楷体;
+    font-size: x-large;
+    text-align: center;
+    text-decoration: none;
+}
+a:hover{
+    color: brown;
+    font-family: 楷体;
+    font-size: x-large;
+    text-align: center;
+    text-decoration: none;
+}
+.welcome{
+    width: fit-content;
+    text-align: justify;
+    font-family: 宋体;
+    font-size: xx-large;
+}
+
+h1{
+    font-family: 楷体;
+    font-size: x-large;
+    text-align: center;
+    color: blueviolet;
+}
+
+table td{
+    border-style: solid;
+    border-width: 1px;
+    font-family: 楷体;
+    font-size: medium;
+    text-align: center;
+    color: cadetblue;
+}
+
+
+.myInput{
+    size: 300px;
+    width: 200px;
+}
+.myButton{
+    width: 50px;
+}
+.myArea{
+    width: 1000px;
+    height: 400px;
+}

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+    <!--指定由Spring负责Action的创建-->
+<!--    <constant name="struts.objectFactory" value="spring" />-->
+    <constant name="struts.enable.DynamicMethodInvocation" value="false"/>
+    <constant name="struts.devMode" value="true"/>
+    <constant name="struts.multipart.saveDir" value="/txt"/>
+    <constant name="struts" value="UTF-8"/>
+<!--    &lt;!&ndash; 设置浏览器是否缓存静态内容。默认值为true 开发阶段最好关闭  &ndash;&gt;-->
+<!--    <constant name="struts.serve.static.browserCache" value="false" />-->
+    <!--国际化配置-->
+    <constant name="struts.i18n.encoding" value="UTF-8"/>
+    <constant name="struts.custom.i18n.resources" value="resource.message"/>
+    <package name="default" extends="struts-default">
+        <result-types>
+            <result-type name="bookResult" class="result.BookResult"/>
+        </result-types>
+        <!-- <global-allowed-methods>regex:.*</global-allowed-methods>-->
+         <interceptors>
+            <interceptor name="bookInter" class="interceptor.BookInterceptor"/>
+             <interceptor name="userInter" class="interceptor.UserInterceptor"/>
+        </interceptors>
+        <action name="addBook" class="bookAction" method="add">
+            <result name="success">addBook.jsp</result>
+            <result name="error">addBook.jsp</result>
+            <result name="input">addBook.jsp</result>
+            <result name="interceptor" type="dispatcher">
+                <param name="location">main.jsp</param>
+            </result>
+            <interceptor-ref name="defaultStack"/>
+            <interceptor-ref name="bookInter"/>
+        </action>
+        <action name="findBook" class="bookAction" method="find">
+            <result name="success">findSuccess.jsp</result>
+            <result name="error">findError.jsp</result>
+            <result name="input">findBook.jsp</result>
+        </action>
+        <action name="searchBook" class="bookAction" method="search">
+            <result name="success">listBook.jsp</result>
+            <result name="error">listBook.jsp</result>
+            <result name="input">findBook.jsp</result>
+        </action>
+        <action name="modifyBook" class="bookAction" method="modify">
+            <result name="success">modifySuccess.jsp</result>
+            <result name="error">modifyError.jsp</result>
+            <result name="input">modifyBook.jsp</result>
+        </action>
+        <action name="informationBook" class="bookAction">
+            <result name="success">bookInformation.jsp</result>
+            <result name="input">bookInformation.jsp</result>
+        </action>
+        <action name="getBook" class="bookAction">
+            <result name="success">modifyBook.jsp</result>
+            <result name="error">modifyError.jsp</result>
+            <result name="input">modifyBook.jsp</result>
+        </action>
+
+        <action name="allBook" class="bookAction" method="list">
+            <result name="success">listBook.jsp</result>
+            <result name="error">listError.jsp</result>
+            <result name="input">main.jsp</result>
+        </action>
+        <action name="deleteBook" class="bookAction" method="delete">
+            <result name="success" type="chain">allBook</result>
+            <result name="error">deleteError.jsp</result>
+            <result name="input">deleteError.jsp</result>
+        </action>
+        <!--UserAction-->
+        <action name="userLogin" class="userAction" method="login">
+            <result name="admin">adminMain.jsp</result>
+            <result name="reader">readerMain.jsp</result>
+            <result name="error">loginError.jsp</result>
+            <result name="input">login.jsp</result>
+            <interceptor-ref name="defaultStack"/>
+            <interceptor-ref name="userInter"/>
+        </action>
+        <action name="userLogout" class="userAction" method="logout">
+            <result name="success">login.jsp</result>
+            <result name="error">loginError.jsp</result>
+            <result name="input">login.jsp</result>
+        </action>
+        <action name="getUser" class="userAction">
+            <result name="success">updateUser.jsp</result>
+        </action>
+        <action name="addUser" class="userAction" method="addUser">
+            <result name="success">addUser.jsp</result>
+            <result name="error">addUser.jsp</result>
+            <result name="input">addUser.jsp</result>
+        </action>
+        <action name="manageUser" class="userAction" method="allUser">
+            <result name="success">listUser.jsp</result>
+            <result name="error">listUser.jsp</result>
+            <result name="input">listUser.jsp</result>
+        </action>
+        <action name="searchUser" class="userAction" method="searchUser">
+            <result name="success">listUser.jsp</result>
+            <result name="error">listUser.jsp</result>
+        </action>
+        <action name="updateUser" class="userAction" method="updateUser">
+            <result name="success">updateUser.jsp</result>
+            <result name="error">updateUser.jsp</result>
+            <result name="input">updateUser.jsp</result>
+        </action>
+        <action name="deleteUser" class="userAction" method="deleteUser">
+            <result name="success" type="chain">manageUser</result>
+            <result name="error">listUser.jsp</result>
+            <result name="input">listUser.jsp</result>
+        </action>
+        <!--=========LendAction===========================-->
+        <action name="listBorrowed" class="action.LendAction" method="listBorrowedBook">
+            <result name="success">listBorrowedBook.jsp</result>
+            <result name="error">loginError.jsp</result>
+        </action>
+        <action name="listBorrowBook" class="action.LendAction" method="listBorrowBook">
+            <result name="success">listBorrowBook.jsp</result>
+            <result name="error">borrowError.jsp</result>
+        </action>
+        <action name="borrowBook" class="action.LendAction" method="BorrowBook">
+            <result name="success" type="chain">listBorrowBook</result>
+            <result name="error">borrowError.jsp</result>
+        </action>
+        <action name="returnBook" class="action.LendAction" method="returnBook">
+            <result name="success" type="chain">listBorrowed</result>
+            <result name="error" type="chain">listBorrowed</result>
+        </action>
+    </package>
+</struts>

@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<!--主要在本文件中配置工厂类-->
+<hibernate-configuration>
+  <session-factory>
+    <property name="current_session_context_class">thread</property>
+    <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+    <!--==================配置连接数据库的基本属性信息====================-->
+    <!--配置使用的表名 表名后的为Mysql8.0的固定搭配-->
+    <property name="hibernate.connection.url"><![CDATA[jdbc:mysql://localhost:3306/liyang?useSSL=false&serverTimezone=UTC]]></property>
+    <property name="connection.username">root</property>
+    <property name="connection.password">tiger</property>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</property>
+    <!--=====================可选配置===================================-->
+    <!-- DB schema will be updated if needed -->
+    <property name="hibernate.hbm2ddl.auto">update</property>
+    <!--打印SQL语句-->
+    <property name="hibernate.show_sql">true</property>
+    <!--格式化SQL-->
+    <property name="hibernate.format_sql">true</property>
+    <!--========================引入配置文件=============================-->
+    <mapping resource="model/Book.hbm.xml"/>
+    <mapping resource="model/User.hbm.xml"/>
+    <mapping resource="model/Author.hbm.xml"/>
+    <mapping resource="model/Lend.hbm.xml"/>
+
+  </session-factory>
+</hibernate-configuration>

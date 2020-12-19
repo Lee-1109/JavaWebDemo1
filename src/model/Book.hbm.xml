@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <!--name指定POJO类，table指定对应的数据库表-->
+    <class name="model.Book" table="books" schema="liyang">
+        <!--name指定主键 type指定类型-->
+        <id name="isbn" type="java.lang.String">
+            <!--表示表中的属性列-->
+            <column name="isbn" length="20"/>
+            <!--主键生成策略 应用程序自身对Id赋值-->
+            <generator class="assigned"/>
+        </id>
+        <!--name指定属性 与表中数据对应-->
+        <property name="title" type="java.lang.String">
+            <column name="title" length="20"/>
+        </property>
+        <property name="price" type="java.lang.Integer">
+            <column name="price"/>
+        </property>
+        <property name="bookInformation" type="java.lang.String">
+            <column name="BOOKINFOR" length="50"/>
+        </property>
+        <!-- 多对一映射的关键字段-->
+        <many-to-one
+                name="author"
+                column="AUTHOR_ID"
+                class="model.Author"
+                fetch="join"
+                lazy="false"
+                cascade="save-update">
+        </many-to-one>
+    </class>
+</hibernate-mapping>
