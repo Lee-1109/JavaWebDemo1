@@ -15,7 +15,7 @@
 <!--    <constant name="struts.serve.static.browserCache" value="false" />-->
     <!--国际化配置-->
     <constant name="struts.i18n.encoding" value="UTF-8"/>
-    <constant name="struts.custom.i18n.resources" value="resource.message"/>
+    <constant name="struts.custom.i18n.resources" value="propertities.message"/>
     <package name="default" extends="struts-default">
         <result-types>
             <result-type name="bookResult" class="result.BookResult"/>
